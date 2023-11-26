@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&family=Raleway&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <title>Tikes</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Cairo', sans-serif;
+        font-family: 'Raleway', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        
+    }
+    nav{ 
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 50px;
+        justify-content: center;
+        align-items: center; 
+        border-bottom: solid 1px black;
+    }
+    input,button{
+        margin-left: 10px;
+        height: 30px; 
+    }
+    button{
+        width: 70px;  
+        border: none;
+        border-radius: 10px;
+    }
+    .cnt{
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(238, 238, 238);
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    .card{
+        display: flex;
+        flex-direction: row;
+        background-color: #eeeeee;
+        width: 4cm;
+        height: 2cm;
+        box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+        border-radius: 10px;
+        margin: 1px;
+        
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 4cm;
+        height: 2cm;
+    }
+    h2{
+        margin: 0;
+    }
+    
+</style>
+<body>
+    
+    <nav id="editor">
+        <input type="text" placeholder="prex" id="prex">
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="many" id="many">
+        <button style="background-color: rgb(167, 167, 167);" id="bntadd">ADD</button>
+        <button style="background-color: rgb(29, 165, 65);"  id="bntprent" >Prent</button>
+        <button style="background-color: rgb(253, 32, 32);" id="bntremov">remov</button>
+    </nav>
+    <div class="cnt" id="takes">
+
+       
+        
+    </div>
+</body>
+<script>
+
+
+    let cards = [
+       
+       
+    ]
+
+    function FallCard(){
+        cards = cards.splice(1,0)
+        document.getElementById('takes').innerHTML += ""
+      for (const card of cards) {
+        document.getElementById('takes').innerHTML += `
+            <div class="card">
+                <div class="content">
+                    <h2>${card.prex}DA</h2>
+                    <span>${card.name}</span>
+                </div>
+            </div>
+        `
+      }
+       
+    }
+    FallCard()
+
+    document.getElementById('bntadd').addEventListener("click", function(){
+        var prex = document.getElementById('prex').value
+        var name = document.getElementById('name').value
+        if(!prex == ""){
+           var cardtake = { "prex": prex, "name":name}
+            cards.push(cardtake)
+            FallCard()
+        }
+        
+        var many = document.getElementById('many').value 
+        for(i=0;i<many;i++){
+            document.getElementById('takes').innerHTML += 
+        `
+            <div class="card">
+                <div class="content">
+                    <h2>${prex}DA</h2>
+                    <span>${name}</span>
+                </div>
+            </div>
+        `
+        }
+    
+})
+
+document.getElementById('bntremov').addEventListener("click",function(){
+    window.location.reload();
+})
+document.getElementById('bntprent').addEventListener("click",function(){
+    window.print();
+})
+
+
+
+</script>
+<script src="script.js"></script>
+</html>

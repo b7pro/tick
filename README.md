@@ -1,1 +1,1 @@
-just create tick price
+Just a site for creating price labels

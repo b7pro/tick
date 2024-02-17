@@ -1,1 +1,1 @@
-Just a site for creating price labels
+ Just a site for creating price labels
